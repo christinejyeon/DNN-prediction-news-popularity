@@ -7,12 +7,22 @@ og_url = og.iloc[:,0]
 
 article = ''
 articles = pandas.DataFrame()
+sigh = []
 for i in range(len(og_url)):
     article = ''
     page = urlopen(og_url[i])
     soup = BeautifulSoup(page, 'html.parser')
-    content = soup.find('article', {"class": "full post story"})
-    for j in content.findAll('p'):
-        article = article + ' ' + j.text
-    article = [article]
-    articles = articles.append(pandas.DataFrame(data=article.copy()))
+    if soup.find('article', {"class": "full post story"}) is None:
+        if soup.find('section', {"class": "article-content fullwidth"}) is None:
+            content = soup.find('section', {"class": "article-content blueprint"})
+        else:
+            content = soup.find('section', {"class": "article-content fullwidth"})
+    else:
+        content = soup.find('article', {"class": "full post story"})
+    try:
+        for j in content.findAll('p'):
+            article = article + ' ' + j.text
+        article = [article]
+        articles = articles.append(pandas.DataFrame(data=article.copy()))
+    except:
+        sigh.append(i)

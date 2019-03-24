@@ -6,5 +6,12 @@ omitted_articles = pandas.read_csv("/Users/Christine/Documents/GLIS 689/omitted_
 
 omitted_articles = omitted_articles.drop("Unnamed: 0", axis=1)
 omitted_articles.columns = ["indexno"]
-omitted_articles["indexno"].tolist()
+omitted_articles = omitted_articles["indexno"].tolist()
+
+og = og.drop(omitted_articles, axis=0)
+
+og_articles = og_articles.drop("Unnamed: 0", axis=1)
+og_dataset = pandas.concat([og_articles.reset_index(drop=True), og.drop("url", axis=1).reset_index(drop=True)], axis=1)
+
+og_dataset.to_csv("og_dataset.csv")
 

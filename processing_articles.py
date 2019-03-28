@@ -1,7 +1,6 @@
 import pandas
 import numpy
 
-dpd
 # Universal sentence encoder
 import tensorflow as tf
 import tensorflow_hub as hub
@@ -17,8 +16,6 @@ embed_fn = embed_useT("https://tfhub.dev/google/universal-sentence-encoder/2")
 
 # embed = hub.Module("https://tfhub.dev/google/universal-sentence-encoder/2")
 
-
-### Keras kicks in
 og_dataset = pandas.read_csv("/home/christinejyeon/newspop/og_dataset.csv")
 # og_dataset = pandas.read_csv("/Users/Christine/Documents/GLIS 689/og_dataset.csv")
 og_dataset = og_dataset.drop(columns=["Unnamed: 0"],axis=1)

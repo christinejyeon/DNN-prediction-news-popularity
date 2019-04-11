@@ -28,7 +28,7 @@ for i in range(len(og_dataset)):
     except:
         og_dataset.at[i,"vec"] = numpy.nan
 
-embed_fn([og_dataset.iloc[0,0]])
+# embed_fn([og_dataset.iloc[0,0]])
 
 
 # og_dataset.to_csv("/home/christinejyeon/newspop/og_dataset_vec.csv",sep='\t', encoding='utf-8')
